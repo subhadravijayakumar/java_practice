@@ -10,3 +10,25 @@ class Solution {
         
     }
 }
+leetcode 643
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        double max=Double.NEGATIVE_INFINITY;;
+        double average=0;
+        int windowstart=0;
+        int windowsum=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            windowsum+=nums[i];
+            if(i>=k-1)
+            {
+                average= (double)windowsum/k;
+                max=Math.max(max,average);
+                windowsum-=nums[windowstart];
+                windowstart++;
+            }
+        }
+        return max;
+        
+    }
+}
